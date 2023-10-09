@@ -18,7 +18,7 @@ const RegistrationScreen = () => {
   const [password, setPassword] = useState("");
 
   const clickButtonRegister = () => {
-    Alert.alert("Credentials", `${login} + ${email} + ${password}`);
+    console.log("Credentials", `${login} + ${email} + ${password}`);
     setLogin("");
     setEmail("");
     setPassword("");

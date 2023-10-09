@@ -17,7 +17,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
 
   const clickButtonLogin = (e) => {
-    Alert.alert("Credentials", `${email} + ${password}`);
+    console.log("Credentials", `${email} + ${password}`);
     setEmail("");
     setPassword("");
   };
