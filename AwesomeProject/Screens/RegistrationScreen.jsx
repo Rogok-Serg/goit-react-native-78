@@ -17,8 +17,7 @@ const RegistrationScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleButton = (e) => {
-    e.preventDefault();
+  const clickButtonRegister = () => {
     Alert.alert("Credentials", `${login} + ${email} + ${password}`);
     setLogin("");
     setEmail("");
@@ -47,17 +46,13 @@ const RegistrationScreen = () => {
             autoFocus
             style={styles.textInput}
             placeholder="Логін"
-            onChangeText={(text) => {
-              setLogin(text);
-            }}
+            onChangeText={setLogin}
             value={login}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Адреса електронної пошти"
-            onChangeText={(text) => {
-              setEmail(text);
-            }}
+            onChangeText={setEmail}
             dataDetectorTypes="address"
             inputMode="email"
             keyboardType="email-address"
@@ -69,12 +64,10 @@ const RegistrationScreen = () => {
             secureTextEntry={true}
             autoComplete="new-password"
             minLength={5}
-            onChangeText={(text) => {
-              setPassword(text);
-            }}
+            onChangeText={setPassword}
             value={password}
           />
-          <Pressable style={styles.button} onPress={handleButton}>
+          <Pressable style={styles.button} onPress={clickButtonRegister}>
             <Text style={styles.buttonText}>Зареєстуватися</Text>
           </Pressable>
         </KeyboardAvoidingView>

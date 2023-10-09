@@ -16,8 +16,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleButton = (e) => {
-    e.preventDefault();
+  const clickButtonLogin = (e) => {
     Alert.alert("Credentials", `${email} + ${password}`);
     setEmail("");
     setPassword("");
@@ -44,9 +43,8 @@ const LoginScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Адреса електронної пошти"
-            onChangeText={(text) => {
-              setEmail(text);
-            }}
+            autoFocus
+            onChangeText={setEmail}
             dataDetectorTypes="address"
             inputMode="email"
             keyboardType="email-address"
@@ -58,12 +56,10 @@ const LoginScreen = () => {
             secureTextEntry={true}
             autoComplete="new-password"
             minLength={5}
-            onChangeText={(text) => {
-              setPassword(text);
-            }}
+            onChangeText={setPassword}
             value={password}
           />
-          <Pressable style={styles.button} onPress={handleButton}>
+          <Pressable style={styles.button} onPress={clickButtonLogin}>
             <Text style={styles.buttonText}>Увійти</Text>
           </Pressable>
         </KeyboardAvoidingView>
