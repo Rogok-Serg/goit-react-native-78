@@ -18,8 +18,10 @@ import ImageBG from "../Images/photo-bg.png";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation();
   const [showPassword, setShowPassword] = useState(false);
+  const [inputActive, setInputActive] = useState("");
+
+  const navigation = useNavigation();
 
   const clickButtonLogin = (e) => {
     console.log("Credentials", `${email} + ${password}`);
@@ -29,6 +31,10 @@ const LoginScreen = () => {
 
   const visibleButtonPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleInput = (nameInput) => {
+    setInputActive(nameInput);
   };
 
   return (
@@ -51,7 +57,14 @@ const LoginScreen = () => {
             behavior={Platform.OS == "ios" ? "padding" : "height"}
           >
             <TextInput
-              style={styles.textInput}
+              style={[
+                {
+                  backgroundColor:
+                    inputActive === "email" ? "#FFFFFF" : "#F6F6F6",
+                  borderColor: inputActive === "email" ? "#FF6C00" : "#E8E8E8",
+                },
+                styles.textInput,
+              ]}
               placeholder="Адреса електронної пошти"
               autoFocus
               onChangeText={setEmail}
@@ -59,16 +72,28 @@ const LoginScreen = () => {
               inputMode="email"
               keyboardType="email-address"
               value={email}
+              onFocus={() => handleInput("email")}
+              onBlur={() => handleInput("")}
             />
             <View>
               <TextInput
-                style={styles.textInput}
+                style={[
+                  {
+                    backgroundColor:
+                      inputActive === "password" ? "#FFFFFF" : "#F6F6F6",
+                    borderColor:
+                      inputActive === "password" ? "#FF6C00" : "#E8E8E8",
+                  },
+                  styles.textInput,
+                ]}
                 placeholder="Пароль"
                 secureTextEntry={!showPassword ? true : false}
                 autoComplete="new-password"
                 minLength={5}
                 onChangeText={setPassword}
                 value={password}
+                onFocus={() => handleInput("password")}
+                onBlur={() => handleInput("")}
               />
               <Text style={styles.showButton} onPress={visibleButtonPassword}>
                 Показати
@@ -112,7 +137,6 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    backgroundColor: "#F6F6F6",
     paddingLeft: 17,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
@@ -120,7 +144,6 @@ const styles = StyleSheet.create({
     height: 50,
     color: "#212121",
     borderWidth: 2,
-    borderColor: "#E8E8E8",
     borderRadius: 5,
     margin: 10,
   },
