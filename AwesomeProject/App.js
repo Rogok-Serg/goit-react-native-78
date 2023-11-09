@@ -1,10 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { ImageBackground, StyleSheet, View } from "react-native";
-import { useFonts } from "expo-font";
-import ImageBG from "./Images/photo-bg.png";
+import React, { useEffect, useState } from "react";
 
-import RegistrationScreen from "./Screens/RegistrationScreen";
-import LoginScreen from "./Screens/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
+import { ImageBackground, StyleSheet, View } from "react-native";
+
+import { useFonts } from "expo-font";
+
+import RegistrationScreen from "./src/Screens/RegistrationScreen";
+import LoginScreen from "./src/Screens/LoginScreen";
+import PostsScreen from "./src/Screens/PostsScreen";
+
+const MainStack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,13 +25,30 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <ImageBackground source={ImageBG} resizeMode="cover" style={styles.image}>
-        <RegistrationScreen />
-        {/* <LoginScreen /> */}
-        <StatusBar style="auto" />
-      </ImageBackground>
-    </View>
+    <NavigationContainer>
+      <MainStack.Navigator>
+        <MainStack.Screen
+          name="RegistrationScreen"
+          component={RegistrationScreen}
+          options={{
+            title: "Registration",
+            headerStyle: { height: 0 },
+            headerTitleStyle: {
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          }}
+        />
+        <MainStack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{
+            headerStyle: { height: 0 },
+          }}
+        />
+        <MainStack.Screen name="PostsScreen" component={PostsScreen} />
+      </MainStack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -34,13 +58,6 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     backgroundColor: "#FFF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  image: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
