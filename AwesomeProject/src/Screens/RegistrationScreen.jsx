@@ -29,7 +29,7 @@ const RegistrationScreen = () => {
   const navigation = useNavigation();
 
   const clickButtonRegister = () => {
-    console.log("Credentials", `${login}+${email} + ${password}`);
+    console.log("Credentials", `${login} + ${email} + ${password}`);
     setLogin("");
     setEmail("");
     setPassword("");
