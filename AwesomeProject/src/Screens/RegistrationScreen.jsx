@@ -49,7 +49,21 @@ const RegistrationScreen = () => {
         <View style={styles.formData}>
           <View style={styles.containerImage}>
             <Image source={UserImage} style={styles.userImage}></Image>
-            <Ionicons name="md-checkmark-circle" size={32} color="green" />
+            {/* <Ionicons
+              name="md-checkmark-circle"
+              style={styles.iconPosition}
+              size={32}
+              color="green"
+            /> */}
+            <TouchableOpacity style={styles.wrapperIcon}>
+              {/* <Text style={styles.iconPosition}>&times;</Text> */}
+              <Ionicons
+                name="md-checkmark-circle"
+                style={styles.iconPosition}
+                size={25}
+                color="green"
+              />
+            </TouchableOpacity>
           </View>
           <Text
             style={{
@@ -151,9 +165,6 @@ const RegistrationScreen = () => {
   );
 };
 const styles = StyleSheet.create({
-  inputBorderColor: {
-    color: "pink",
-  },
   // container: {
   //   flex: 1,
   //   margin: 0,
@@ -172,18 +183,38 @@ const styles = StyleSheet.create({
   containerImage: {
     position: "absolute",
     top: -60,
-  },
-  userImage: {
     width: 120,
     height: 120,
   },
+  userImage: {
+    width: "100%",
+    height: "100%",
+  },
+  wrapperIcon: {
+    position: "absolute",
+    bottom: 10,
+    right: -12,
+    // borderRadius: 100,
 
+    // borderWidth: 1,
+    // borderColor: "#E8E8E8",
+    // backgroundColor: "#FFFFFF",
+    // textAlign: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
+  },
+  // iconPosition: {
+  //   // bottom: 4,
+  //   // left: 5,
+  // },
   formData: {
     flex: 1,
     position: "absolute",
     bottom: 0,
     left: 0,
     width: "100%",
+    paddingLeft: 16,
+    paddingRight: 16,
     borderTopRightRadius: 25,
     borderTopLeftRadius: 25,
     alignItems: "center",
@@ -195,7 +226,7 @@ const styles = StyleSheet.create({
     paddingLeft: 17,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
-    width: 343,
+    minWidth: "100%",
     height: 50,
     color: "#212121",
     borderWidth: 2,
@@ -204,10 +235,10 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    width: 343,
     marginTop: 43,
     paddingTop: 16,
     paddingBottom: 16,
+    paddingLeft: 32,
     backgroundColor: "#FF6C00",
     borderRadius: 100,
   },
