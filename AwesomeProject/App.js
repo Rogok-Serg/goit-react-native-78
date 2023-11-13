@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { useFonts } from "expo-font";
 

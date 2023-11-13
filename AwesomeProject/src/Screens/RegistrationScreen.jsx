@@ -43,125 +43,128 @@ const RegistrationScreen = () => {
   };
 
   return (
-    <ImageBackground source={ImageBG} resizeMode="cover" style={styles.image}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        {/* <View style={styles.container}> */}
-        <View style={styles.formData}>
-          <View style={styles.containerImage}>
-            <Image source={UserImage} style={styles.userImage}></Image>
-            {/* <Ionicons
-              name="md-checkmark-circle"
-              style={styles.iconPosition}
-              size={32}
-              color="green"
-            /> */}
-            <TouchableOpacity style={styles.wrapperIcon}>
-              {/* <Text style={styles.iconPosition}>&times;</Text> */}
-              <Ionicons
-                name="md-checkmark-circle"
-                style={styles.iconPosition}
-                size={25}
-                color="green"
-              />
-            </TouchableOpacity>
-          </View>
-          <Text
-            style={{
-              fontFamily: "Roboto-Medium",
-              fontWeight: 500,
-              fontSize: 30,
-              marginTop: 92,
-              marginBottom: 33,
-              textAlign: "center",
-            }}
-          >
-            Реєстрація
-          </Text>
-          <KeyboardAvoidingView
-            behavior={Platform.OS == "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={0}
-          >
-            <TextInput
-              autoFocus
-              style={[
-                {
-                  backgroundColor:
-                    inputActive === "login" ? "#FFFFFF" : "#F6F6F6",
-                  borderColor: inputActive === "login" ? "#FF6C00" : "#E8E8E8",
-                },
-                styles.textInput,
-              ]}
-              placeholder="Логін"
-              value={login}
-              onChangeText={setLogin}
-              onFocus={() => handleInput("login")}
-              onBlur={() => handleInput("")}
-            />
-            <TextInput
-              style={[
-                {
-                  backgroundColor:
-                    inputActive === "email" ? "#FFFFFF" : "#F6F6F6",
-                  borderColor: inputActive === "email" ? "#FF6C00" : "#E8E8E8",
-                },
-                styles.textInput,
-              ]}
-              placeholder="Адреса електронної пошти"
-              value={email}
-              onChangeText={setEmail}
-              dataDetectorTypes="address"
-              inputMode="email"
-              keyboardType="email-address"
-              onFocus={() => handleInput("email")}
-              onBlur={() => handleInput("")}
-            />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={-180}
+      >
+        <ImageBackground
+          source={ImageBG}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          {/* <View style={styles.container}> */}
+          <View style={styles.formData}>
+            <View style={styles.containerImage}>
+              <Image source={UserImage} style={styles.userImage}></Image>
+
+              <TouchableOpacity style={styles.wrapperIcon}>
+                <Ionicons
+                  name="md-checkmark-circle"
+                  style={styles.iconPosition}
+                  size={25}
+                  color="green"
+                />
+              </TouchableOpacity>
+            </View>
+            <Text
+              style={{
+                fontFamily: "Roboto-Medium",
+                fontWeight: 500,
+                fontSize: 30,
+                marginTop: 92,
+                marginBottom: 33,
+                textAlign: "center",
+              }}
+            >
+              Реєстрація
+            </Text>
             <View>
+              <TextInput
+                autoFocus
+                style={[
+                  {
+                    backgroundColor:
+                      inputActive === "login" ? "#FFFFFF" : "#F6F6F6",
+                    borderColor:
+                      inputActive === "login" ? "#FF6C00" : "#E8E8E8",
+                  },
+                  styles.textInput,
+                ]}
+                placeholder="Логін"
+                value={login}
+                onChangeText={setLogin}
+                onFocus={() => handleInput("login")}
+                onBlur={() => handleInput("")}
+              />
               <TextInput
                 style={[
                   {
                     backgroundColor:
-                      inputActive === "password" ? "#FFFFFF" : "#F6F6F6",
+                      inputActive === "email" ? "#FFFFFF" : "#F6F6F6",
                     borderColor:
-                      inputActive === "password" ? "#FF6C00" : "#E8E8E8",
+                      inputActive === "email" ? "#FF6C00" : "#E8E8E8",
                   },
                   styles.textInput,
                 ]}
-                placeholder="Пароль"
-                secureTextEntry={!showPassword ? true : false}
-                autoComplete="new-password"
-                minLength={5}
-                value={password}
-                onChangeText={setPassword}
-                onFocus={() => handleInput("password")}
+                placeholder="Адреса електронної пошти"
+                value={email}
+                dataDetectorTypes="address"
+                inputMode="email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                onChangeText={setEmail}
+                onFocus={() => handleInput("email")}
                 onBlur={() => handleInput("")}
               />
-              <Text style={styles.showButton} onPress={visibleButtonPassword}>
-                {!showPassword ? "Показати" : "Сховати"}
-              </Text>
+              <View>
+                <TextInput
+                  style={[
+                    {
+                      backgroundColor:
+                        inputActive === "password" ? "#FFFFFF" : "#F6F6F6",
+                      borderColor:
+                        inputActive === "password" ? "#FF6C00" : "#E8E8E8",
+                    },
+                    styles.textInput,
+                  ]}
+                  placeholder="Пароль"
+                  secureTextEntry={!showPassword ? true : false}
+                  autoComplete="new-password"
+                  minLength={5}
+                  value={password}
+                  autoCapitalize="none"
+                  onChangeText={setPassword}
+                  onFocus={() => handleInput("password")}
+                  onBlur={() => handleInput("")}
+                />
+                <Text style={styles.showButton} onPress={visibleButtonPassword}>
+                  {!showPassword ? "Показати" : "Сховати"}
+                </Text>
+              </View>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={clickButtonRegister}
+              >
+                <Text style={styles.buttonText}>Зареєстуватися</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ backgroundColorcolor: "#FF6C00" }}>
+                <Text
+                  style={styles.link}
+                  onPress={() => navigation.navigate("LoginScreen")}
+                  dataDetectorType="link"
+                >
+                  Вже є акаунт? Увійти
+                </Text>
+              </TouchableOpacity>
             </View>
-
-            <TouchableOpacity
-              style={styles.button}
-              onPress={clickButtonRegister}
-            >
-              <Text style={styles.buttonText}>Зареєстуватися</Text>
-            </TouchableOpacity>
-          </KeyboardAvoidingView>
-          <TouchableOpacity style={{ backgroundColorcolor: "#FF6C00" }}>
-            <Text
-              style={styles.link}
-              onPress={() => navigation.navigate("LoginScreen")}
-              dataDetectorType="link"
-            >
-              Вже є акаунт? Увійти
-            </Text>
-          </TouchableOpacity>
-
+          </View>
           {/* </View> */}
-        </View>
-      </TouchableWithoutFeedback>
-      <StatusBar style="auto" />
-    </ImageBackground>
+          <StatusBar style="auto" />
+        </ImageBackground>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 const styles = StyleSheet.create({
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
   //   justifyContent: "center",
   // },
   image: {
-    flex: 1,
+    // flex: 0,
     width: "100%",
     height: "100%",
     alignItems: "center",
@@ -258,6 +261,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingTop: 16,
     paddingBottom: 66,
+    textAlign: "center",
   },
 });
 

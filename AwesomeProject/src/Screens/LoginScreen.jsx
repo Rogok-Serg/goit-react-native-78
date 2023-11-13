@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import {
-  Alert,
   View,
   TextInput,
   Text,
   StyleSheet,
-  Pressable,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
@@ -38,86 +36,101 @@ const LoginScreen = () => {
   };
 
   return (
-    <ImageBackground source={ImageBG} resizeMode="cover" style={styles.image}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.formData}>
-          <Text
-            style={{
-              fontFamily: "Roboto-Medium",
-              fontWeight: 500,
-              fontSize: 30,
-              marginTop: 32,
-              marginBottom: 32,
-              textAlign: "center",
-            }}
-          >
-            Увійти
-          </Text>
-          <KeyboardAvoidingView
-            behavior={Platform.OS == "ios" ? "padding" : "height"}
-          >
-            <TextInput
-              style={[
-                {
-                  backgroundColor:
-                    inputActive === "email" ? "#FFFFFF" : "#F6F6F6",
-                  borderColor: inputActive === "email" ? "#FF6C00" : "#E8E8E8",
-                },
-                styles.textInput,
-              ]}
-              placeholder="Адреса електронної пошти"
-              autoFocus
-              onChangeText={setEmail}
-              dataDetectorTypes="address"
-              inputMode="email"
-              keyboardType="email-address"
-              value={email}
-              onFocus={() => handleInput("email")}
-              onBlur={() => handleInput("")}
-            />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={-250}
+      >
+        <ImageBackground
+          source={ImageBG}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <View style={styles.formData}>
+            <Text
+              style={{
+                fontFamily: "Roboto-Medium",
+                fontWeight: 500,
+                fontSize: 30,
+                marginTop: 32,
+                marginBottom: 32,
+                textAlign: "center",
+              }}
+            >
+              Увійти
+            </Text>
             <View>
               <TextInput
                 style={[
                   {
                     backgroundColor:
-                      inputActive === "password" ? "#FFFFFF" : "#F6F6F6",
+                      inputActive === "email" ? "#FFFFFF" : "#F6F6F6",
                     borderColor:
-                      inputActive === "password" ? "#FF6C00" : "#E8E8E8",
+                      inputActive === "email" ? "#FF6C00" : "#E8E8E8",
                   },
                   styles.textInput,
                 ]}
-                placeholder="Пароль"
-                secureTextEntry={!showPassword ? true : false}
-                autoComplete="new-password"
-                minLength={5}
-                onChangeText={setPassword}
-                value={password}
-                onFocus={() => handleInput("password")}
+                placeholder="Адреса електронної пошти"
+                autoFocus
+                dataDetectorTypes="address"
+                inputMode="email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
+                onFocus={() => handleInput("email")}
                 onBlur={() => handleInput("")}
               />
-              <Text style={styles.showButton} onPress={visibleButtonPassword}>
-                Показати
-              </Text>
+              <View>
+                <TextInput
+                  style={[
+                    {
+                      backgroundColor:
+                        inputActive === "password" ? "#FFFFFF" : "#F6F6F6",
+                      borderColor:
+                        inputActive === "password" ? "#FF6C00" : "#E8E8E8",
+                    },
+                    styles.textInput,
+                  ]}
+                  placeholder="Пароль"
+                  secureTextEntry={!showPassword ? true : false}
+                  autoComplete="new-password"
+                  autoCapitalize="none"
+                  minLength={5}
+                  value={password}
+                  onChangeText={setPassword}
+                  onFocus={() => handleInput("password")}
+                  onBlur={() => handleInput("")}
+                />
+                <Text style={styles.showButton} onPress={visibleButtonPassword}>
+                  {!showPassword ? "Показати" : "Сховати"}{" "}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={clickButtonLogin}
+              >
+                <Text style={styles.buttonText}>Увійти</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ backgroundColorcolor: "#FF6C00" }}>
+                <Text
+                  onPress={() => navigation.navigate("RegistrationScreen")}
+                  style={styles.link}
+                  dataDetectorType="link"
+                >
+                  Немає акаунту? Зареєструватися
+                </Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.button} onPress={clickButtonLogin}>
-              <Text style={styles.buttonText}>Увійти</Text>
-            </TouchableOpacity>
-          </KeyboardAvoidingView>
-          <Text
-            onPress={() => navigation.navigate("RegistrationScreen")}
-            style={styles.link}
-            dataDetectorType="link"
-          >
-            Немає акаунту? Зареєструватися
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-    </ImageBackground>
+          </View>
+        </ImageBackground>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 const styles = StyleSheet.create({
   image: {
-    flex: 1,
+    // flex: 1,
     width: "100%",
     height: "100%",
     alignItems: "center",
@@ -175,6 +188,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 16,
     marginBottom: 128,
+    textAlign: "center",
   },
 });
 
