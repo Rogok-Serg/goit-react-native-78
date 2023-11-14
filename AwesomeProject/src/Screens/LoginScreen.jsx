@@ -21,10 +21,11 @@ const LoginScreen = () => {
 
   const navigation = useNavigation();
 
-  const clickButtonLogin = (e) => {
+  const clickButtonLogin = () => {
     console.log("Credentials", `${email} + ${password}`);
     setEmail("");
     setPassword("");
+    navigation.navigate("Home");
   };
 
   const visibleButtonPassword = () => {

@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-const PostsScreen = ({ navigation }) => {
+const PostsScreen = () => {
   return (
     <View>
-      <Text> HOME PAGE</Text>
+      <Text> PostsScreen PAGE</Text>
     </View>
   );
 };

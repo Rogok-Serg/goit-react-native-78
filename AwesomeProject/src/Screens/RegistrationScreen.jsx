@@ -33,6 +33,7 @@ const RegistrationScreen = () => {
     setLogin("");
     setEmail("");
     setPassword("");
+    navigation.navigate("Home");
   };
   const visibleButtonPassword = () => {
     setShowPassword(!showPassword);

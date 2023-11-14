@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -10,6 +10,7 @@ import { useFonts } from "expo-font";
 import RegistrationScreen from "./src/Screens/RegistrationScreen";
 import LoginScreen from "./src/Screens/LoginScreen";
 import PostsScreen from "./src/Screens/PostsScreen";
+import Home from "./src/Screens/Home";
 
 const MainStack = createStackNavigator();
 
@@ -26,7 +27,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
+      <MainStack.Navigator initialRouteName="LoginScreen">
         <MainStack.Screen
           name="RegistrationScreen"
           component={RegistrationScreen}
@@ -46,6 +47,7 @@ export default function App() {
             headerStyle: { height: 0 },
           }}
         />
+        <MainStack.Screen name="Home" component={Home} />
         <MainStack.Screen name="PostsScreen" component={PostsScreen} />
       </MainStack.Navigator>
     </NavigationContainer>
