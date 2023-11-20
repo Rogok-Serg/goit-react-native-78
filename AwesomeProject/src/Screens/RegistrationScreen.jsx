@@ -54,6 +54,9 @@ const RegistrationScreen = () => {
           resizeMode="cover"
           style={styles.image}
         >
+          <div className="box"></div>
+          <div></div>
+          <box></box>
           {/* <View style={styles.container}> */}
           <View style={styles.formData}>
             <View style={styles.containerImage}>

@@ -3,7 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
+// import { StyleSheet } from "react-native";
 
 import { useFonts } from "expo-font";
 
@@ -54,13 +54,13 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#FFF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     margin: 0,
+//     padding: 0,
+//     backgroundColor: "#FFF",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+// });
