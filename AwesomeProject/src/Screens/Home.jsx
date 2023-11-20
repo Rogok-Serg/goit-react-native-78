@@ -11,7 +11,7 @@ const Home = () => {
     <View>
       <Text> Home PAGE</Text>
       <PostsScreen />
-      <Tabs.Navigator>
+      <Tabs.Navigator initialRouteName="Home">
         <Tabs.Screen name="PostsScreen" component={PostsScreen} />
         <Tabs.Screen name="CreatePostsScreen" component={CreatePostsScreen} />
         <Tabs.Screen name="ProfileScreen" component={ProfileScreen} />
