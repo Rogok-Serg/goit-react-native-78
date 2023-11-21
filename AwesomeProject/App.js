@@ -47,7 +47,13 @@ export default function App() {
             headerStyle: { height: 0 },
           }}
         />
-        <MainStack.Screen name="Home" component={Home} />
+        <MainStack.Screen
+          options={{
+            headerStyle: { height: 0 },
+          }}
+          name="Home"
+          component={Home}
+        />
         <MainStack.Screen name="PostsScreen" component={PostsScreen} />
       </MainStack.Navigator>
     </NavigationContainer>

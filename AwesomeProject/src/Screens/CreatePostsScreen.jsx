@@ -1,11 +1,7 @@
 import { Text, View } from "react-native";
 
 const CreatePostsScreen = () => {
-  return (
-    <View>
-      <Text> CreatePostsScreen PAGE</Text>
-    </View>
-  );
+  return <View></View>;
 };
 
 export default CreatePostsScreen;
