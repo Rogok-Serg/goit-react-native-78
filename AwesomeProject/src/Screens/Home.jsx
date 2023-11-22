@@ -36,7 +36,7 @@ const Home = () => {
             },
             headerRight: () => (
               <TouchableOpacity onPress={() => alert("Logout")}>
-                <MaterialIcons name="logout" size={24} color="black" />
+                <MaterialIcons name="logout" size={24} color="#BDBDBD" />
               </TouchableOpacity>
             ),
           }}
