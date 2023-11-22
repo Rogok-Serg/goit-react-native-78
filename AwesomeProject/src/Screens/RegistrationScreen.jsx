@@ -15,7 +15,8 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { AntDesign } from "@expo/vector-icons";
+// import Ionicons from "@expo/vector-icons/Ionicons";
 import ImageBG from "../Images/photo-bg.png";
 import UserImage from "../Images/user-photo.png";
 
@@ -54,21 +55,27 @@ const RegistrationScreen = () => {
           resizeMode="cover"
           style={styles.image}
         >
-          <div className="box"></div>
-          <div></div>
-          <box></box>
           {/* <View style={styles.container}> */}
           <View style={styles.formData}>
             <View style={styles.containerImage}>
               <Image source={UserImage} style={styles.userImage}></Image>
 
-              <TouchableOpacity style={styles.wrapperIcon}>
-                <Ionicons
+              <TouchableOpacity
+                style={styles.wrapperIcon}
+                onPress={() => alert("add Icon")}
+              >
+                <AntDesign
+                  name="pluscircleo"
+                  size={25}
+                  color="#FF6C00"
+                  style={styles.iconPosition}
+                />
+                {/* <Ionicons
                   name="md-checkmark-circle"
                   style={styles.iconPosition}
                   size={25}
                   color="green"
-                />
+                /> */}
               </TouchableOpacity>
             </View>
             <Text

@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import PostsScreen from "./PostsScreen";
 import CreatePostsScreen from "./CreatePostsScreen";
 import ProfileScreen from "./ProfileScreen";
+import { MaterialIcons, Feather } from "@expo/vector-icons";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -33,6 +34,11 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             },
+            headerRight: () => (
+              <TouchableOpacity onPress={() => alert("Logout")}>
+                <MaterialIcons name="logout" size={24} color="black" />
+              </TouchableOpacity>
+            ),
           }}
           name="PostsScreen"
           component={PostsScreen}
