@@ -49,7 +49,10 @@ export default function App() {
         />
         <MainStack.Screen
           options={{
-            headerStyle: { height: 0 },
+            title: "",
+            headerStyle: {
+              height: 0,
+            },
           }}
           name="Home"
           component={Home}

@@ -3,7 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 import PostsScreen from "./PostsScreen";
 import CreatePostsScreen from "./CreatePostsScreen";
 import ProfileScreen from "./ProfileScreen";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  MaterialIcons,
+  AntDesign,
+  Feather,
+} from "@expo/vector-icons";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -12,27 +17,51 @@ const Tabs = createBottomTabNavigator();
 const Home = () => {
   const navigation = useNavigation();
 
+  const screenOptions = {
+    tabBarShowLabel: false,
+    HeaderShown: false,
+    tabBarStyle: {
+      position: "absolute",
+      bottom: 0,
+      right: 0,
+      left: 0,
+      elevation: 0,
+      height: 60,
+    },
+  };
+
   return (
     <View style={styles.container}>
-      <Tabs.Navigator initialRouteName="Home">
+      <Tabs.Navigator screenOptions={screenOptions}>
         <Tabs.Screen
           options={{
-            title: "Публікації",
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View>
+                  <AntDesign
+                    name="appstore-o"
+                    size={24}
+                    color={focused ? "#212121CC" : "#111"}
+                  />
+                </View>
+              );
+            },
+            title: "",
             headerStyle: {
-              height: 80,
+              height: 44,
               // margin: 80,
             },
+            headerTintColor: "#212121",
             headerTitleStyle: {
               flex: 0,
-              color: "#212121",
               textAlign: "center",
               fontFamily: "Roboto-Medium",
               fontSize: 17,
               fontStyle: "normal",
               fontWeight: 500,
               lineHeight: 22,
-              alignItems: "center",
-              justifyContent: "center",
+              // alignItems: "center",
+              // justifyContent: "center",
             },
             headerRight: () => (
               <TouchableOpacity onPress={() => alert("Logout")}>
@@ -45,16 +74,54 @@ const Home = () => {
           onPress={() => navigation.navigate("PostsScreen")}
         />
         <Tabs.Screen
-          options={{ title: "Створити публікацію" }}
-          onPress={() => navigation.navigate("CreatePostsScreen")}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{
+                    marginBottom: 5,
+                    marginTop: 10,
+                    width: 70,
+                    height: 40,
+                    borderRadius: 30,
+                    backgroundColor: "#FF6C00",
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="plus"
+                    size={24}
+                    color="#FFFFFF"
+                  />
+                </View>
+              );
+            },
+            title: "",
+          }}
           name="CreatePostsScreen"
           component={CreatePostsScreen}
+          onPress={() => navigation.navigate("CreatePostsScreen")}
         />
         <Tabs.Screen
-          options={{ title: "Створити публікацію" }}
-          onPress={() => navigation.navigate("ProfileScreen")}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View>
+                  <Feather
+                    name="user"
+                    size={24}
+                    color={focused ? "#212121CC" : "#111"}
+                  />
+                </View>
+              );
+            },
+            title: "",
+          }}
           name="ProfileScreen"
           component={ProfileScreen}
+          onPress={() => navigation.navigate("ProfileScreen")}
         />
       </Tabs.Navigator>
     </View>

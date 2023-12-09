@@ -2,7 +2,8 @@ import { Text, View } from "react-native";
 
 const ProfileScreen = () => {
   return (
-    <View>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>ProfileScreen</Text>
     </View>
   );
 };
