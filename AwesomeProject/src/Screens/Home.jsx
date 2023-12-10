@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1 }}>
       <Tabs.Navigator screenOptions={screenOptions}>
         <Tabs.Screen
           options={{
@@ -48,23 +48,36 @@ const Home = () => {
             },
             title: "",
             headerStyle: {
-              height: 44,
-              // margin: 80,
+              height: 88,
             },
-            headerTintColor: "#212121",
-            headerTitleStyle: {
-              flex: 0,
-              textAlign: "center",
-              fontFamily: "Roboto-Medium",
-              fontSize: 17,
-              fontStyle: "normal",
-              fontWeight: 500,
-              lineHeight: 22,
-              // alignItems: "center",
-              // justifyContent: "center",
+            headerTitle: () => {
+              return (
+                <Text
+                  style={{
+                    position: "absolute",
+                    top: 55,
+                    right: -219,
+                    fontFamily: "Roboto-Medium",
+                    fontSize: 17,
+                    fontStyle: "normal",
+                    fontWeight: 500,
+                    lineHeight: 22,
+                    color: "#212121",
+                  }}
+                >
+                  Публікації
+                </Text>
+              );
             },
+
             headerRight: () => (
-              <TouchableOpacity onPress={() => alert("Logout")}>
+              <TouchableOpacity
+                style={{
+                  paddingTop: 40,
+                  paddingRight: 10,
+                }}
+                onPress={() => alert("Logout")}
+              >
                 <MaterialIcons name="logout" size={24} color="#BDBDBD" />
               </TouchableOpacity>
             ),
@@ -99,6 +112,27 @@ const Home = () => {
               );
             },
             title: "",
+            headerStyle: {
+              height: 88,
+            },
+            headerTitle: () => {
+              return (
+                <Text
+                  style={{
+                    position: "absolute",
+                    top: 55,
+                    right: -269,
+                    fontFamily: "Roboto-Medium",
+                    fontSize: 17,
+                    fontStyle: "normal",
+                    fontWeight: 500,
+                    lineHeight: 22,
+                  }}
+                >
+                  Створити публікацію
+                </Text>
+              );
+            },
           }}
           name="CreatePostsScreen"
           component={CreatePostsScreen}
@@ -118,6 +152,27 @@ const Home = () => {
               );
             },
             title: "",
+            headerStyle: {
+              height: 88,
+            },
+            headerTitle: () => {
+              return (
+                <Text
+                  style={{
+                    position: "absolute",
+                    top: 55,
+                    right: -219,
+                    fontFamily: "Roboto-Medium",
+                    fontSize: 17,
+                    fontStyle: "normal",
+                    fontWeight: 500,
+                    lineHeight: 22,
+                  }}
+                >
+                  Профіль
+                </Text>
+              );
+            },
           }}
           name="ProfileScreen"
           component={ProfileScreen}

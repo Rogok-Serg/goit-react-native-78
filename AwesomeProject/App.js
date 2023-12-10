@@ -35,8 +35,8 @@ export default function App() {
             title: "Registration",
             headerStyle: { height: 0 },
             headerTitleStyle: {
-              alignItems: "center",
-              justifyContent: "center",
+              // alignItems: "center",
+              // justifyContent: "center",
             },
           }}
         />
@@ -57,7 +57,7 @@ export default function App() {
           name="Home"
           component={Home}
         />
-        <MainStack.Screen name="PostsScreen" component={PostsScreen} />
+        {/* <MainStack.Screen name="PostsScreen" component={PostsScreen} /> */}
       </MainStack.Navigator>
     </NavigationContainer>
   );
